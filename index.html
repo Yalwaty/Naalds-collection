@@ -9,197 +9,190 @@
 </head>
 <body class="font-sans bg-gray-50">
 
-  <!-- ✅ Navigation -->
+  <!-- ✅ Navbar -->
   <nav class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 flex justify-between items-center py-4">
       <a href="#" class="text-2xl font-bold text-purple-800">NAALD'S</a>
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#home" class="hover:text-purple-600">Home</a>
+      <div class="flex items-center space-x-6">
         <a href="#shop" class="hover:text-purple-600">Shop</a>
-        <a href="#about" class="hover:text-purple-600">About Us</a>
+        <a href="#about" class="hover:text-purple-600">About</a>
         <a href="#contact" class="hover:text-purple-600">Contact</a>
-        <button id="cart-btn" class="relative">
-          <i class="fas fa-shopping-cart text-xl"></i>
-          <span id="cart-count" class="absolute -top-2 -right-3 bg-purple-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
-        </button>
+        <a href="#cart" class="relative hover:text-purple-600">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-purple-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+        </a>
+        <button id="subscribe-btn" class="bg-purple-600 text-white px-3 py-1 rounded-full">Sign In / Register</button>
       </div>
     </div>
   </nav>
 
   <!-- ✅ Hero -->
-  <section id="home" class="relative h-[70vh] bg-cover bg-center" style="background-image: url('images/naald1.jpg');">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center">
-      <div>
-        <h1 class="text-4xl md:text-6xl font-bold text-white">Modesty Meets Elegance</h1>
-        <p class="text-lg md:text-2xl text-white mt-4">Halal Fashion for Every Occasion</p>
-        <a href="#shop" class="mt-6 inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full">Shop Now</a>
+<section class="h-96 bg-cover bg-center flex items-center justify-center text-white" 
+         style="background-image:url('images/naald1.jpg');">
+  <div class="text-center">
+    <h1 class="text-4xl font-bold mb-4">Modesty Meets Elegance</h1>
+    <a href="#shop" class="bg-purple-600 px-6 py-3 rounded-full">Shop Now</a>
+  </div>
+</section>
+
+  <!-- ✅ Products -->
+<section id="shop" class="py-16 container mx-auto px-4">
+  <h2 class="text-3xl font-bold text-center mb-12">What's New</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Product 1 -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="images/naald1.jpg" alt="Hijab" class="h-64 w-full object-cover rounded">
+      <h3 class="mt-4 text-lg font-semibold">Hijab</h3>
+      <p class="text-gray-600">Premium Cotton</p>
+      <div class="flex justify-between items-center mt-3">
+        <span class="text-purple-600 font-bold">₦25,000</span>
+        <button onclick="addToCart('Hijab', 25000)" class="bg-purple-100 px-3 py-1 rounded-full">Add</button>
       </div>
     </div>
-  </section>
 
-  <!-- ✅ Shop Section -->
-  <section id="shop" class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">What's New</h2>
-      <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- JS will load products here -->
+    <!-- Product 2 -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="images/naald2.jpg" alt="Luxury Hijab & Gown" class="h-64 w-full object-cover rounded">
+      <h3 class="mt-4 text-lg font-semibold">Luxury Hijab & Gown</h3>
+      <p class="text-gray-600">Elegant breathable fabric</p>
+      <div class="flex justify-between items-center mt-3">
+        <span class="text-purple-600 font-bold">₦30,000</span>
+        <button onclick="addToCart('Luxury Hijab & Gown', 30000)" class="bg-purple-100 px-3 py-1 rounded-full">Add</button>
       </div>
     </div>
-  </section>
 
-  <!-- ✅ Product Detail Modal -->
-  <div id="product-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg max-w-2xl w-full p-6 relative">
-      <button id="close-modal" class="absolute top-3 right-3 text-gray-600"><i class="fas fa-times"></i></button>
-      <img id="modal-image" src="" alt="Product" class="w-full h-64 object-cover rounded mb-4">
-      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
-      <p id="modal-desc" class="text-gray-700 mb-4"></p>
-      <p id="modal-price" class="text-xl text-purple-600 font-bold mb-4"></p>
-      <button id="add-to-cart" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full">Add to Cart</button>
+    <!-- Product 3 -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="images/naald3.jpg" alt="Free Gown" class="h-64 w-full object-cover rounded">
+      <h3 class="mt-4 text-lg font-semibold">Free Gown</h3>
+      <p class="text-gray-600">Elegant free gown collection</p>
+      <div class="flex justify-between items-center mt-3">
+        <span class="text-purple-600 font-bold">₦20,000</span>
+        <button onclick="addToCart('Free Gown', 20000)" class="bg-purple-100 px-3 py-1 rounded-full">Add</button>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ✅ Cart Sidebar -->
-  <div id="cart-sidebar" class="hidden fixed right-0 top-0 h-full w-80 bg-white shadow-lg z-50 p-6 overflow-y-auto">
-    <button id="close-cart" class="absolute top-4 right-4 text-gray-600"><i class="fas fa-times"></i></button>
-    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
-    <div id="cart-items" class="space-y-4"></div>
-    <div class="mt-6 border-t pt-4">
-      <p class="text-lg font-bold">Total: ₦<span id="cart-total">0</span></p>
-      <button class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded">Checkout</button>
-    </div>
-  </div>
 
-  <!-- ✅ About -->
-  <section id="about" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold mb-6">About Naald's Collection</h2>
-        <p class="text-gray-700 mb-4">
-          Founded in 2025, Naald's Collection is a Nigerian halal clothing brand dedicated to providing elegant, modest fashion for Muslim women. 
-        </p>
-        <p class="text-gray-700">
-          Every piece is designed with premium fabrics and skilled artisanship to ensure comfort, beauty, and adherence to Islamic principles of modesty.
-        </p>
-      </div>
-      <img src="images/naald4.jpg" alt="About Naald's" class="rounded-lg shadow">
+  <!-- ✅ Cart -->
+  <section id="cart" class="py-16 container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Your Cart</h2>
+    <div id="cart-items" class="bg-white p-6 rounded shadow"></div>
+    <div class="text-center mt-6">
+      <button id="checkout" class="bg-purple-600 text-white px-6 py-3 rounded-full">Checkout</button>
     </div>
   </section>
 
-  <!-- ✅ Contact -->
-  <section id="contact" class="py-16 bg-white">
+<!-- ✅ About -->
+<section id="about" class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-6">About Naald's Collection</h2>
+    <p class="text-gray-700 mb-4">
+      Founded in 2025, Naald's Collection is a premier Nigerian halal clothing brand dedicated to providing elegant, modest fashion for Muslim women. Our designs combine contemporary style with timeless modesty, ensuring every piece is both beautiful and comfortable.
+    </p>
+    <p class="text-gray-700 mb-4">
+      Each garment is crafted from premium fabrics and designed with attention to detail, allowing women to express their individuality while adhering to Islamic principles of modesty. From casual wear to luxury hijabs and gowns, Naald’s Collection celebrates confidence, elegance, and grace.
+    </p>
+    <p class="text-gray-700">
+      Our mission is to empower women through fashion, offering high-quality, ethically made clothing that complements both lifestyle and faith.
+    </p>
+  </div>
+</section>
+
+  <!-- ✅ Contact Form -->
+  <section id="contact" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
-      <div class="grid md:grid-cols-2 gap-12">
-        <!-- Form -->
-        <form class="bg-gray-50 p-6 rounded-lg shadow">
-          <input type="text" placeholder="Your Name" class="w-full mb-4 px-4 py-2 border rounded">
-          <input type="email" placeholder="Your Email" class="w-full mb-4 px-4 py-2 border rounded">
-          <textarea placeholder="Your Message" rows="4" class="w-full mb-4 px-4 py-2 border rounded"></textarea>
-          <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded">Send Message</button>
-        </form>
-        <!-- Info -->
-        <div class="space-y-6">
-          <p><i class="fas fa-map-marker-alt text-purple-600 mr-2"></i> Abuja, Nigeria</p>
-          <p><i class="fas fa-phone-alt text-purple-600 mr-2"></i> +234 814 957 8033</p>
-          <p><i class="fas fa-envelope text-purple-600 mr-2"></i> Naeema_addau@yahoo.com</p>
-          <p><i class="fas fa-clock text-purple-600 mr-2"></i> Mon-Fri: 9AM - 6PM</p>
-        </div>
-      </div>
+      <form action="https://formspree.io/f/xkgqjawl" method="POST" class="max-w-lg mx-auto bg-white p-6 rounded shadow">
+        <input type="hidden" name="_subject" value="New Contact Form Submission">
+        <input type="text" name="name" placeholder="Your Name" class="w-full mb-4 p-2 border rounded" required>
+        <input type="email" name="email" placeholder="Your Email" class="w-full mb-4 p-2 border rounded" required>
+        <textarea name="message" placeholder="Your Message" rows="4" class="w-full mb-4 p-2 border rounded" required></textarea>
+        <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded">Send</button>
+      </form>
     </div>
   </section>
 
-  <!-- ✅ Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p>© 2025 Naald's Collection. All Rights Reserved.</p>
+  <!-- ✅ Subscription Modal -->
+  <div id="subscribe-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg w-96 p-6 relative">
+      <button id="close-subscribe" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800"><i class="fas fa-times"></i></button>
+      <h2 class="text-2xl font-bold mb-4 text-center">Sign Up / Subscribe</h2>
+      <form action="https://formspree.io/f/xkgqjawl" method="POST" class="flex flex-col space-y-3">
+        <input type="hidden" name="_subject" value="New Subscription">
+        <input type="email" name="email" placeholder="Your Email" class="p-2 border rounded" required>
+        <button type="submit" class="bg-purple-600 text-white py-2 rounded">Subscribe</button>
+      </form>
+      <p class="text-gray-500 text-sm mt-2 text-center">You will receive notifications for new arrivals and discounts.</p>
     </div>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <p>© 2025 Naald's Collection. All rights reserved.</p>
   </footer>
 
-  <!-- ✅ JavaScript -->
+  <!-- ✅ Scripts -->
   <script>
-    // Product data
-    const products = [
-      {id:1, name:"Hijab", desc:"Premium cotton hijab", price:25000, image:"images/naald1.jpg"},
-      {id:2, name:"Luxury Hijab & Gown", desc:"Breathable fabric with elegant drape", price:30000, image:"images/naald2.jpg"},
-      {id:3, name:"Free Gown", desc:"Elegant free gown collection", price:20000, image:"images/naald3.jpg"}
-    ];
-
-    const productList = document.getElementById("product-list");
-    const modal = document.getElementById("product-modal");
-    const modalImage = document.getElementById("modal-image");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDesc = document.getElementById("modal-desc");
-    const modalPrice = document.getElementById("modal-price");
-    const addToCartBtn = document.getElementById("add-to-cart");
-    const cartBtn = document.getElementById("cart-btn");
-    const cartSidebar = document.getElementById("cart-sidebar");
-    const cartItemsDiv = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    const cartCount = document.getElementById("cart-count");
-
-    let selectedProduct = null;
+    // Cart
     let cart = [];
-
-    // Render products
-    products.forEach(product => {
-      const div = document.createElement("div");
-      div.className = "bg-white shadow rounded-lg overflow-hidden cursor-pointer";
-      div.innerHTML = `
-        <img src="${product.image}" class="w-full h-64 object-cover">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">${product.name}</h3>
-          <p class="text-gray-600 text-sm">${product.desc}</p>
-          <p class="text-purple-600 font-bold mt-2">₦${product.price.toLocaleString()}</p>
-        </div>
-      `;
-      div.addEventListener("click", () => openModal(product));
-      productList.appendChild(div);
-    });
-
-    // Open modal
-    function openModal(product) {
-      selectedProduct = product;
-      modalImage.src = product.image;
-      modalTitle.textContent = product.name;
-      modalDesc.textContent = product.desc;
-      modalPrice.textContent = "₦" + product.price.toLocaleString();
-      modal.classList.remove("hidden");
+    function addToCart(name, price){
+      cart.push({name, price});
+      document.getElementById('cart-count').innerText = cart.length;
+      renderCart();
     }
-
-    document.getElementById("close-modal").addEventListener("click", () => {
-      modal.classList.add("hidden");
-    });
-
-    // Add to cart
-    addToCartBtn.addEventListener("click", () => {
-      cart.push(selectedProduct);
-      updateCart();
-      modal.classList.add("hidden");
-      cartSidebar.classList.remove("hidden");
-    });
-
-    // Open/close cart
-    cartBtn.addEventListener("click", () => cartSidebar.classList.toggle("hidden"));
-    document.getElementById("close-cart").addEventListener("click", () => cartSidebar.classList.add("hidden"));
-
-    // Update cart display
-    function updateCart() {
-      cartItemsDiv.innerHTML = "";
-      let total = 0;
-      cart.forEach(item => {
-        total += item.price;
-        const div = document.createElement("div");
-        div.className = "flex justify-between items-center border-b pb-2";
-        div.innerHTML = `
+    function renderCart(){
+      const cartDiv = document.getElementById('cart-items');
+      if(cart.length === 0){
+        cartDiv.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
+        return;
+      }
+      cartDiv.innerHTML = cart.map(item => `
+        <div class="flex justify-between border-b py-2">
           <span>${item.name}</span>
-          <span>₦${item.price.toLocaleString()}</span>
-        `;
-        cartItemsDiv.appendChild(div);
-      });
-      cartTotal.textContent = total.toLocaleString();
-      cartCount.textContent = cart.length;
+          <span>₦${item.price}</span>
+        </div>
+      `).join('');
     }
+
+    // Checkout
+    document.getElementById("checkout").addEventListener("click", function(){
+      if(cart.length === 0){ alert("Your cart is empty!"); return; }
+      const userEmail = prompt("Please enter your email to receive order details:");
+      if(!userEmail) return;
+
+      const orderList = cart.map(item => `${item.name} - ₦${item.price}`).join("\n");
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+      // Send order via Formspree
+      fetch("https://formspree.io/f/xkgqjawl", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: "New Order Received",
+          customer_email: userEmail,
+          order_list: orderList,
+          order_total: total
+        })
+      }).then(()=> {
+        alert(`✅ Your order has been sent! \n\nPlease make payment to:\nDabo Naima Labaran\nGT Bank\nAccount Number: [Your Account Number]\n\nOrder Total: ₦${total}`);
+        cart = [];
+        renderCart();
+        document.getElementById("cart-count").innerText = 0;
+      }).catch((err)=> {
+        alert("❌ Failed to send order. Try again.");
+        console.log(err);
+      });
+    });
+
+    // Subscription Modal
+    const subscribeBtn = document.getElementById('subscribe-btn');
+    const subscribeModal = document.getElementById('subscribe-modal');
+    const closeSubscribe = document.getElementById('close-subscribe');
+    subscribeBtn.addEventListener('click', ()=> subscribeModal.classList.remove('hidden'));
+    closeSubscribe.addEventListener('click', ()=> subscribeModal.classList.add('hidden'));
+    window.addEventListener('click', (e)=> { if(e.target===subscribeModal) subscribeModal.classList.add('hidden'); });
   </script>
 </body>
 </html>
