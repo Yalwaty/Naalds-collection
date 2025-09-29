@@ -1,601 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naald's Collection - Halal Fashion Nigeria</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Custom CSS for zoom feature */
-        .product-image-container {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-image-zoom {
-            transition: transform .5s ease;
-        }
-        
-        .product-image-container:hover .product-image-zoom {
-            transform: scale(1.1);
-        }
-        
-        /* Custom dropdown for mobile */
-        @media (max-width: 768px) {
-            .mobile-dropdown {
-                display: none;
-            }
-            
-            .mobile-dropdown.active {
-                display: block;
-            }
-        }
-        
-        /* Smooth transitions */
-        .transition-all {
-            transition: all 0.3s ease;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naald's Collection - Halal Fashion Nigeria</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="font-sans bg-gray-50">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-purple-800">NAALD'S</a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-800 hover:text-purple-600 transition-all">Home</a>
-                    
-                    <!-- Shop Dropdown -->
-                    <div class="relative group">
-                        <button class="text-gray-800 hover:text-purple-600 transition-all flex items-center">
-                            Shop <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50 hover:text-purple-600">Hijabs</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50 hover:text-purple-600">Jilbabs</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50 hover:text-purple-600">Free Gowns</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-purple-50 hover:text-purple-600">Accessories</a>
-                        </div>
-                    </div>
-                    
-                    <a href="#" class="text-gray-800 hover:text-purple-600 transition-all">About Us</a>
-                    <a href="#" class="text-gray-800 hover:text-purple-600 transition-all">Contact Us</a>
-                    
-                    <!-- Search Bar -->
-                    <div class="relative">
-                        <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
-                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
-                    </div>
-                    
-                    <!-- Login/Register -->
-                    <div class="flex items-center space-x-4">
-                        <a href="#" class="text-gray-800 hover:text-purple-600 transition-all">Login</a>
-                        <span class="text-gray-300">|</span>
-                        <a href="#" class="text-gray-800 hover:text-purple-600 transition-all">Register</a>
-                    </div>
-                    
-                    <!-- Cart -->
-                    <a href="#" class="text-gray-800 hover:text-purple-600 transition-all relative">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="absolute -top-2 -right-2 bg-purple-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                    </a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Dropdown Menu -->
-            <div id="mobile-dropdown" class="mobile-dropdown md:hidden pb-4">
-                <a href="#" class="block py-2 text-gray-800 hover:text-purple-600">Home</a>
-                
-                <!-- Mobile Shop Dropdown -->
-                <div class="py-2">
-                    <button id="mobile-shop-button" class="flex items-center justify-between w-full text-gray-800 hover:text-purple-600">
-                        <span>Shop</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="mobile-shop-dropdown" class="pl-4 hidden">
-                        <a href="#" class="block py-2 text-gray-800 hover:text-purple-600">Hijabs</a>
-                        <a href="#" class="block py-2 text-gray-800 hover:text-purple-600">Jilbabs</a>
-                        <a href="#" class="block py-2 text-gray-800 hover:text-purple-600">Free Gowns</a>
 
-                    </div>
-                </div>
-                
-                <a href="#" class="block py-2 text-gray-800 hover:text-purple-600">About Us</a>
-                <a href="#" class="block py-2 text-gray-800 hover:text-purple-600">Contact Us</a>
-                
-                <!-- Mobile Search -->
-                <div class="relative my-2">
-                    <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
-                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
-                </div>
-                
-                <div class="flex space-x-4 my-2">
-                    <a href="#" class="text-gray-800 hover:text-purple-600">Login</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="#" class="text-gray-800 hover:text-purple-600">Register</a>
-                </div>
-                
-                <a href="#" class="text-gray-800 hover:text-purple-600 flex items-center">
-                    <i class="fas fa-shopping-cart mr-2"></i>
-                    Cart <span class="ml-2 bg-purple-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative">
-        <div class="w-full h-96 md:h-screen max-h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1525507119021-736d5b8e9e48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
-            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                <div class="text-center px-4">
-                    <h1 class="text-3xl md:text-5xl font-bold text-white mb-4">Modesty Meets Elegance</h1>
-                    <p class="text-xl md:text-2xl text-white mb-8">Halal Fashion for Every Occasion</p>
-                    <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all">Shop Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What's New Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">What's New</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                <!-- Product 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
-                    <div class="product-image-container h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Embroidered Hijab" class="w-full h-full object-cover product-image-zoom">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1"> Hijab</h3>
-                        <p class="text-gray-600 text-sm mb-2">Premium cotton </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold">₦25,000</span>
-                            <button class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm hover:bg-purple-200 transition-all">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
-                    <div class="product-image-container h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583743814966-8936f8fd5d92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Luxury Jilbab" class="w-full h-full object-cover product-image-zoom">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Luxury Hijab with long sleeve gown</h3>
-                        <p class="text-gray-600 text-sm mb-2">Breathable fabric with elegant drape</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold">₦30,000</span>
-                            <button class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm hover:bg-purple-200 transition-all">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 3 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
-                    <div class="product-image-container h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1617137968373-1a4b6b174e1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Free Gown Set" class="w-full h-full object-cover product-image-zoom">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Free Gown </h3>
-                        <p class="text-gray-600 text-sm mb-2"> free gown</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold">₦20,000</span>
-                            <button class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm hover:bg-purple-200 transition-all">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 4 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
-                    <div class="product-image-container h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1617137968167-9ab991a84a31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Silk Scarf" class="w-full h-full object-cover product-image-zoom">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Silk Scarf</h3>
-                        <p class="text-gray-600 text-sm mb-2">Luxurious silk with subtle sheen</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-600 font-bold">₦6,800</span>
-                            <button class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm hover:bg-purple-200 transition-all">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-medium hover:bg-purple-600 hover:text-white transition-all">View All Products</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop by Category</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Hijabs Category -->
-                <a href="#" class="group relative h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Hijabs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Hijabs</h3>
-                    </div>
-                </a>
-                
-                <!-- Jilbabs Category -->
-                <a href="#" class="group relative h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://images.unsplash.com/photo-1583743814966-8936f8fd5d92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Jilbabs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Jilbabs</h3>
-                    </div>
-                </a>
-                
-                <!-- Free Gowns Category -->
-                <a href="#" class="group relative h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://images.unsplash.com/photo-1617137968373-1a4b6b174e1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Free Gowns" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Free Gowns</h3>
-                    </div>
-                </a>
-                
-                <!-- Accessories Category -->
-                <a href="#" class="group relative h-64 overflow-hidden rounded-lg shadow-md">
-                    <img src="https://images.unsplash.com/photo-1617137968167-9ab991a84a31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Accessories" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                        <h3 class="text-white text-2xl font-bold">Accessories</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Page Example (hidden by default) -->
-    <div id="product-page" class="hidden py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Product Images -->
-                <div>
-                    <div class="product-image-container mb-4 rounded-lg overflow-hidden">
-                        <img id="main-product-image" src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Embroidered Hijab" class="w-full h-96 object-cover product-image-zoom cursor-zoom-in">
-                    </div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div class="border rounded overflow-hidden cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Hijab Color 1" class="w-full h-20 object-cover" onclick="changeMainImage(this.src)">
-                        </div>
-                        <div class="border rounded overflow-hidden cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1617137968167-9ab991a84a31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hijab Color 2" class="w-full h-20 object-cover" onclick="changeMainImage(this.src)">
-                        </div>
-                        <div class="border rounded overflow-hidden cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1583743814966-8936f8fd5d92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Hijab Color 3" class="w-full h-20 object-cover" onclick="changeMainImage(this.src)">
-                        </div>
-                        <div class="border rounded overflow-hidden cursor-pointer">
-                            <img src="https://images.unsplash.com/photo-1617137968373-1a4b6b174e1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hijab Color 4" class="w-full h-20 object-cover" onclick="changeMainImage(this.src)">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product Details -->
-                <div>
-                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Embroidered Hijab</h1>
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="text-gray-600 ml-2">(24 reviews)</span>
-                    </div>
-                    
-                    <p class="text-2xl font-bold text-purple-600 mb-6">₦8,500</p>
-                    
-                    <p class="text-gray-700 mb-6">
-                        Our premium embroidered hijab is crafted from high-quality cotton with delicate hand-stitched embroidery along the edges. The breathable fabric ensures comfort throughout the day while maintaining an elegant drape.
-                    </p>
-                    
-                    <div class="mb-6">
-                        <h3 class="font-semibold text-gray-800 mb-2">Color</h3>
-                        <div class="flex space-x-2">
-                            <button class="w-8 h-8 rounded-full bg-blue-600 border-2 border-white shadow-md"></button>
-                            <button class="w-8 h-8 rounded-full bg-pink-400 border-2 border-white shadow-md"></button>
-                            <button class="w-8 h-8 rounded-full bg-green-500 border-2 border-white shadow-md"></button>
-                            <button class="w-8 h-8 rounded-full bg-purple-500 border-2 border-white shadow-md"></button>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <h3 class="font-semibold text-gray-800 mb-2">Size</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <button class="px-4 py-2 border rounded hover:bg-purple-100 hover:border-purple-300">Small</button>
-                            <button class="px-4 py-2 border rounded hover:bg-purple-100 hover:border-purple-300">Medium</button>
-                            <button class="px-4 py-2 border rounded bg-purple-100 border-purple-300">Large</button>
-                            <button class="px-4 py-2 border rounded hover:bg-purple-100 hover:border-purple-300">X-Large</button>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <h3 class="font-semibold text-gray-800 mb-2">Quantity</h3>
-                        <div class="flex items-center">
-                            <button class="w-10 h-10 border rounded-l flex items-center justify-center">-</button>
-                            <input type="number" value="1" class="w-16 h-10 border-t border-b text-center">
-                            <button class="w-10 h-10 border rounded-r flex items-center justify-center">+</button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all flex-1">Add to Cart</button>
-                        <button class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-medium hover:bg-purple-50 transition-all flex-1">Buy Now</button>
-                    </div>
-                    
-                    <div class="mt-8 pt-6 border-t">
-                        <h3 class="font-semibold text-gray-800 mb-2">Product Details</h3>
-                        <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                            <li>100% premium cotton</li>
-                            <li>Hand-stitched embroidery</li>
-                            <li>Breathable and lightweight</li>
-                            <li>Machine wash cold, line dry</li>
-                            <li>Available in 4 colors</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- ✅ Navigation -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 flex justify-between items-center py-4">
+      <a href="#" class="text-2xl font-bold text-purple-800">NAALD'S</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="hover:text-purple-600">Home</a>
+        <a href="#shop" class="hover:text-purple-600">Shop</a>
+        <a href="#about" class="hover:text-purple-600">About Us</a>
+        <a href="#contact" class="hover:text-purple-600">Contact</a>
+        <button id="cart-btn" class="relative">
+          <i class="fas fa-shopping-cart text-xl"></i>
+          <span id="cart-count" class="absolute -top-2 -right-3 bg-purple-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </button>
+      </div>
     </div>
+  </nav>
 
-    <!-- About Us Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6 text-gray-800">About Naald's Collection</h2>
-                    <p class="text-gray-700 mb-4">
-                        Founded in 2018, Naald's Collection is a Nigerian halal clothing brand dedicated to providing elegant, modest fashion for Muslim women. Our mission is to combine traditional Islamic values with contemporary style.
-                    </p>
-                    <p class="text-gray-700 mb-6">
-                        Every piece in our collection is carefully designed and crafted to meet the highest standards of quality and modesty. We source only the finest fabrics and work with skilled artisans to create garments that are both beautiful and comfortable.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-purple-100 p-4 rounded-lg flex-1 min-w-[200px]">
-                            <h3 class="font-bold text-purple-800 mb-2">100% Halal</h3>
-                            <p class="text-gray-700 text-sm">All our designs adhere to Islamic principles of modesty</p>
-                        </div>
-                        <div class="bg-purple-100 p-4 rounded-lg flex-1 min-w-[200px]">
-                            <h3 class="font-bold text-purple-800 mb-2">Premium Quality</h3>
-                            <p class="text-gray-700 text-sm">We use only the finest fabrics and materials</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1525507119021-736d5b8e9e48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About Us" class="w-full h-full object-cover">
-                </div>
-            </div>
+  <!-- ✅ Hero -->
+  <section id="home" class="relative h-[70vh] bg-cover bg-center" style="background-image: url('images/naald1.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-bold text-white">Modesty Meets Elegance</h1>
+        <p class="text-lg md:text-2xl text-white mt-4">Halal Fashion for Every Occasion</p>
+        <a href="#shop" class="mt-6 inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Shop Section -->
+  <section id="shop" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">What's New</h2>
+      <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- JS will load products here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Product Detail Modal -->
+  <div id="product-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg max-w-2xl w-full p-6 relative">
+      <button id="close-modal" class="absolute top-3 right-3 text-gray-600"><i class="fas fa-times"></i></button>
+      <img id="modal-image" src="" alt="Product" class="w-full h-64 object-cover rounded mb-4">
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-desc" class="text-gray-700 mb-4"></p>
+      <p id="modal-price" class="text-xl text-purple-600 font-bold mb-4"></p>
+      <button id="add-to-cart" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- ✅ Cart Sidebar -->
+  <div id="cart-sidebar" class="hidden fixed right-0 top-0 h-full w-80 bg-white shadow-lg z-50 p-6 overflow-y-auto">
+    <button id="close-cart" class="absolute top-4 right-4 text-gray-600"><i class="fas fa-times"></i></button>
+    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+    <div id="cart-items" class="space-y-4"></div>
+    <div class="mt-6 border-t pt-4">
+      <p class="text-lg font-bold">Total: ₦<span id="cart-total">0</span></p>
+      <button class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded">Checkout</button>
+    </div>
+  </div>
+
+  <!-- ✅ About -->
+  <section id="about" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold mb-6">About Naald's Collection</h2>
+        <p class="text-gray-700 mb-4">
+          Founded in 2025, Naald's Collection is a Nigerian halal clothing brand dedicated to providing elegant, modest fashion for Muslim women. 
+        </p>
+        <p class="text-gray-700">
+          Every piece is designed with premium fabrics and skilled artisanship to ensure comfort, beauty, and adherence to Islamic principles of modesty.
+        </p>
+      </div>
+      <img src="images/naald4.jpg" alt="About Naald's" class="rounded-lg shadow">
+    </div>
+  </section>
+
+  <!-- ✅ Contact -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Form -->
+        <form class="bg-gray-50 p-6 rounded-lg shadow">
+          <input type="text" placeholder="Your Name" class="w-full mb-4 px-4 py-2 border rounded">
+          <input type="email" placeholder="Your Email" class="w-full mb-4 px-4 py-2 border rounded">
+          <textarea placeholder="Your Message" rows="4" class="w-full mb-4 px-4 py-2 border rounded"></textarea>
+          <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded">Send Message</button>
+        </form>
+        <!-- Info -->
+        <div class="space-y-6">
+          <p><i class="fas fa-map-marker-alt text-purple-600 mr-2"></i> Abuja, Nigeria</p>
+          <p><i class="fas fa-phone-alt text-purple-600 mr-2"></i> +234 814 957 8033</p>
+          <p><i class="fas fa-envelope text-purple-600 mr-2"></i> Naeema_addau@yahoo.com</p>
+          <p><i class="fas fa-clock text-purple-600 mr-2"></i> Mon-Fri: 9AM - 6PM</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Us Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Contact Us</h2>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <h3 class="text-xl font-semibold mb-6 text-gray-800">Send us a message</h3>
-                        <form>
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300">
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300">
-                            </div>
-                            <div class="mb-4">
-                                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
-                                <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block text-gray-700 mb-2">Message</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300"></textarea>
-                            </div>
-                            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all w-full">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
-                        <h3 class="text-xl font-semibold mb-6 text-gray-800">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-map-marker-alt text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Our Location</h4>
-                                    <p class="text-gray-700">123 Islamic Street, Central Business District, Abuja, Nigeria</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Phone Number</h4>
-                                    <p class="text-gray-700">+234 814 957 8033</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Email Address</h4>
-                                    <p class="text-gray-700">info@naaldscollection.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-clock text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Working Hours</h4>
-                                    <p class="text-gray-700">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                                    <p class="text-gray-700">Saturday: 10:00 AM - 4:00 PM</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-semibold text-gray-800 mb-4">Follow Us</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="bg-purple-100 text-purple-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-purple-200 transition-all">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="bg-purple-100 text-purple-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-purple-200 transition-all">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="bg-purple-100 text-purple-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-purple-200 transition-all">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="bg-purple-100 text-purple-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-purple-200 transition-all">
-                                    <i class="fab fa-pinterest-p"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ✅ Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Naald's Collection. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ✅ JavaScript -->
+  <script>
+    // Product data
+    const products = [
+      {id:1, name:"Hijab", desc:"Premium cotton hijab", price:25000, image:"images/naald1.jpg"},
+      {id:2, name:"Luxury Hijab & Gown", desc:"Breathable fabric with elegant drape", price:30000, image:"images/naald2.jpg"},
+      {id:3, name:"Free Gown", desc:"Elegant free gown collection", price:20000, image:"images/naald3.jpg"}
+    ];
+
+    const productList = document.getElementById("product-list");
+    const modal = document.getElementById("product-modal");
+    const modalImage = document.getElementById("modal-image");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalPrice = document.getElementById("modal-price");
+    const addToCartBtn = document.getElementById("add-to-cart");
+    const cartBtn = document.getElementById("cart-btn");
+    const cartSidebar = document.getElementById("cart-sidebar");
+    const cartItemsDiv = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.getElementById("cart-count");
+
+    let selectedProduct = null;
+    let cart = [];
+
+    // Render products
+    products.forEach(product => {
+      const div = document.createElement("div");
+      div.className = "bg-white shadow rounded-lg overflow-hidden cursor-pointer";
+      div.innerHTML = `
+        <img src="${product.image}" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">${product.name}</h3>
+          <p class="text-gray-600 text-sm">${product.desc}</p>
+          <p class="text-purple-600 font-bold mt-2">₦${product.price.toLocaleString()}</p>
         </div>
-    </section>
+      `;
+      div.addEventListener("click", () => openModal(product));
+      productList.appendChild(div);
+    });
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">NAALD'S</h3>
-                    <p class="text-gray-400 mb-4">Modesty Meets Elegance — Halal Fashion for Every Occasion</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">
-                            <i class="fab fa-pinterest-p"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Home</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Shop</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">My Account</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Order Tracking</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Wishlist</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Shipping Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">Returns & Exchanges</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Subscribe to get updates on new arrivals and special offers.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l text-gray-900 focus:outline-none w-full">
-                        <button class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-r">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400 mb-4 md:mb-0">© 2023 Naald's Collection. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">Terms of Service</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-all">Shipping Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    // Open modal
+    function openModal(product) {
+      selectedProduct = product;
+      modalImage.src = product.image;
+      modalTitle.textContent = product.name;
+      modalDesc.textContent = product.desc;
+      modalPrice.textContent = "₦" + product.price.toLocaleString();
+      modal.classList.remove("hidden");
+    }
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileDropdown = document.getElementById('mobile-dropdown');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileDropdown.classList.toggle('active');
-        });
-        
-        // Mobile shop dropdown toggle
-        const mobileShopButton = document.getElementById('mobile-shop-button');
-        const mobileShopDropdown = document.getElementById('mobile-shop-dropdown');
-        
-        mobileShopButton.addEventListener('click', () => {
-            mobileShopDropdown.classList.toggle('hidden');
-            const icon = mobileShopButton.querySelector('i');
-            if (mobileShopDropdown.classList.contains('hidden')) {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            }
-        });
-        
-        // Product image zoom and change
-        function changeMainImage(src) {
-            document.getElementById('main-product-image').src = src;
-        }
-        
-        // For demonstration purposes - show product page when clicking on a product
-        document.querySelectorAll('.product-image-container, [onclick^="changeMainImage"]').forEach(element => {
-            element.addEventListener('click', function() {
-                document.getElementById('product-page').classList.remove('hidden');
-                window.scrollTo(0, 0);
-            });
-        });
-    </script>
+    document.getElementById("close-modal").addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    // Add to cart
+    addToCartBtn.addEventListener("click", () => {
+      cart.push(selectedProduct);
+      updateCart();
+      modal.classList.add("hidden");
+      cartSidebar.classList.remove("hidden");
+    });
+
+    // Open/close cart
+    cartBtn.addEventListener("click", () => cartSidebar.classList.toggle("hidden"));
+    document.getElementById("close-cart").addEventListener("click", () => cartSidebar.classList.add("hidden"));
+
+    // Update cart display
+    function updateCart() {
+      cartItemsDiv.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        const div = document.createElement("div");
+        div.className = "flex justify-between items-center border-b pb-2";
+        div.innerHTML = `
+          <span>${item.name}</span>
+          <span>₦${item.price.toLocaleString()}</span>
+        `;
+        cartItemsDiv.appendChild(div);
+      });
+      cartTotal.textContent = total.toLocaleString();
+      cartCount.textContent = cart.length;
+    }
+  </script>
 </body>
 </html>
